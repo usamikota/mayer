@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鳥取中華飯 メイヤー！ | 燕趙園のそばで味わう本格中華</title>
+  <meta name="description" content="鳥取県の道の駅「燕趙園」にある中華料理店。牛骨ラーメンと本格チャーハンが自慢。営業時間11:00〜14:00。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ==================== RESET & BASE ==================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red:      #C0392B;
+      --red-dark: #922B21;
+      --red-light:#E74C3C;
+      --gold:     #C9A84C;
+      --gold-lt:  #F0D080;
+      --ink:      #1A1209;
+      --bg:       #FDFAF5;
+      --bg2:      #F5EFE0;
+      --gray:     #6B6B6B;
+      --border:   #DDD0B8;
+      --white:    #FFFFFF;
+      --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,0.12);
+      --shadow-lg:0 8px 48px rgba(0,0,0,0.18);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+    section { width: 100%; }
+
+    /* ==================== UTILITY ==================== */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      display: inline-block;
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 11px;
+      letter-spacing: .25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 4px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+    .section-title span { color: var(--red); }
+    .section-sub {
+      font-size: 15px;
+      color: var(--gray);
+      margin-top: 12px;
+      max-width: 560px;
+    }
+
+    /* ==================== CTA BUTTONS ==================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      cursor: pointer;
+      transition: all .22s ease;
+      border: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      border-color: var(--red);
+      box-shadow: 0 4px 16px rgba(192,57,43,.35);
+    }
+    .btn-primary:hover {
+      background: var(--red-dark);
+      border-color: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(192,57,43,.45);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,.7);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,.12);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--ink);
+      border-color: var(--gold);
+      box-shadow: 0 4px 16px rgba(201,168,76,.35);
+    }
+    .btn-gold:hover {
+      background: #b8943e;
+      border-color: #b8943e;
+      transform: translateY(-2px);
+    }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ==================== HEADER (STICKY) ==================== */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      background: rgba(26,18,9,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,.25);
+      transition: all .3s;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .logo-jp {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .logo-en {
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: .12em;
+    }
+    .header-hours {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+    }
+    .header-hours strong {
+      color: var(--gold-lt);
+      font-weight: 700;
+    }
+    .header-cta {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .header-cta .btn {
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+    @media (max-width: 640px) {
+      .header-hours { display: none; }
+      .header-cta .btn-outline { display: none; }
+      .header-cta .btn { padding: 9px 16px; font-size: 12px; }
+    }
+
+    /* ==================== HERO ==================== */
+    #hero {
+      position: relative;
+      height: 100svh;
+      min-height: 560px;
+      max-height: 860px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: brightness(.72) saturate(1.05);
+    }
+    /* 中国庭園風オーバーレイ */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(192,57,43,.08) 0%,
+        rgba(26,18,9,.42) 60%,
+        rgba(26,18,9,.62) 100%
+      );
+      z-index: 1;
+    }
+    /* 装飾：金の縦線 */
+    .hero-deco-line {
+      position: absolute;
+      top: 64px; bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(201,168,76,.45) 30%, rgba(201,168,76,.2) 80%, transparent);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      padding-top: 64px; /* header offset */
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,.2);
+      border: 1px solid rgba(201,168,76,.5);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      color: var(--gold-lt);
+      letter-spacing: .1em;
+      margin-bottom: 20px;
+    }
+    .hero-badge::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(1.4); }
+    }
+    .hero-eyecatch {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: clamp(13px, 2vw, 18px);
+      color: var(--gold-lt);
+      letter-spacing: .3em;
+      margin-bottom: 16px;
+      opacity: .9;
+    }
+    .hero-title {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: clamp(36px, 6.5vw, 72px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .hero-title .accent { color: var(--gold-lt); }
+    .hero-title .name {
+      display: block;
+      font-size: clamp(22px, 3.5vw, 42px);
+      font-weight: 400;
+      color: rgba(255,255,255,.8);
+      letter-spacing: .08em;
+      margin-top: 8px;
+    }
+    .hero-desc {
+      font-size: clamp(14px, 1.8vw, 17px);
+      color: rgba(255,255,255,.78);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.85;
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 56px;
+    }
+    .hero-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .hero-info-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,.7);
+    }
+    .hero-info-item svg { color: var(--gold); width: 16px; height: 16px; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      letter-spacing: .2em;
+      color: rgba(255,255,255,.5);
+    }
+    .hero-scroll span { display: block; width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(201,168,76,.6), transparent); animation: scrollDown 1.8s infinite; }
+    @keyframes scrollDown { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+    /* ==================== ANNOUNCEMENT BAR ==================== */
+    #announce {
+      background: linear-gradient(90deg, var(--red-dark), var(--red));
+      color: var(--white);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .announce-inner {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .announce-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .announce-item .tag {
+      background: rgba(255,255,255,.2);
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+    .divider-dot { color: rgba(255,255,255,.35); font-size: 18px; }
+
+    /* ==================== CONCEPT ==================== */
+    #concept {
+      padding: 100px 0;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    /* 背景装飾：薄い牡丹文様風 */
+    #concept::before {
+      content: '燕';
+      position: absolute;
+      right: -40px; top: 40px;
+      font-size: 320px;
+      font-family: 'Zen Maru Gothic', sans-serif;
+      color: rgba(192,57,43,.04);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .concept-img-wrap {
+      position: relative;
+    }
+    .concept-img-main {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: var(--shadow-lg);
+    }
+    .concept-img-sub {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      width: 48%;
+      aspect-ratio: 1;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 4px solid var(--white);
+      box-shadow: var(--shadow);
+    }
+    .concept-quote {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 24px;
+      border-left: 4px solid var(--red);
+      padding-left: 20px;
+    }
+    .concept-text {
+      font-size: 15px;
+      color: #4A4035;
+      line-height: 2;
+      margin-bottom: 32px;
+    }
+    .concept-features {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .concept-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      background: var(--bg2);
+      border-radius: 8px;
+      border-left: 3px solid var(--gold);
+    }
+    .concept-feature-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .concept-feature-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .concept-feature-text span {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    /* ==================== POPULAR MENU ==================== */
+    #popular {
+      padding: 100px 0;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    #popular::after {
+      content: '趙';
+      position: absolute;
+      left: -60px; bottom: -40px;
+      font-size: 380px;
+      font-family: 'Zen Maru Gothic', sans-serif;
+      color: rgba(255,255,255,.025);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .popular-head { margin-bottom: 56px; }
+    .popular-head .section-label { color: var(--gold); }
+    .popular-head .section-title { color: var(--white); }
+    .popular-head .section-title span { color: var(--gold-lt); }
+    .popular-head .section-sub { color: rgba(255,255,255,.55); }
+    .popular-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .popular-card {
+      background: #241A0D;
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .popular-card-body { flex: 1; }
+    .popular-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.5);
+      border-color: rgba(201,168,76,.5);
+    }
+    .popular-card-img {
+      height: 280px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .popular-card-img img { transition: transform .4s ease; }
+    .popular-card:hover .popular-card-img img { transform: scale(1.06); }
+    .popular-card-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--red);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: .05em;
+    }
+    .popular-card-body { padding: 22px 24px 26px; }
+    .popular-card-name {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .popular-card-desc { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.75; margin-bottom: 16px; }
+    .popular-card-price {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 22px;
+      color: var(--gold-lt);
+      font-weight: 700;
+    }
+    .popular-card-price small { font-size: 13px; color: rgba(255,255,255,.4); margin-left: 4px; font-weight: 400; }
+
+    /* ==================== RECOMMEND (PREMIUM SET) ==================== */
+    #recommend {
+      padding: 100px 0;
+      background: linear-gradient(160deg, var(--bg) 0%, #EDE5D4 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #recommend::before {
+      content: '園';
+      position: absolute;
+      right: -60px; top: -20px;
+      font-size: 400px;
+      font-family: 'Zen Maru Gothic', sans-serif;
+      color: rgba(192,57,43,.05);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .recommend-head { margin-bottom: 56px; text-align: center; }
+    .recommend-head .section-sub { margin: 12px auto 0; text-align: center; }
+    .recommend-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .rec-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 2px solid transparent;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      position: relative;
+    }
+    .rec-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    /* 1番人気：目立たせる */
+    .rec-card.featured {
+      border-color: var(--red);
+      transform: scale(1.03);
+      box-shadow: 0 8px 40px rgba(192,57,43,.25);
+    }
+    .rec-card.featured:hover {
+      transform: scale(1.03) translateY(-6px);
+      box-shadow: 0 16px 56px rgba(192,57,43,.3);
+    }
+    .rec-card-ribbon {
+      position: absolute;
+      top: 0; right: 0;
+      background: var(--red);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-bottom-left-radius: 8px;
+      letter-spacing: .08em;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .rec-card-ribbon::before { content: '★'; font-size: 10px; }
+    .rec-card-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      position: relative;
+    }
+    .rec-card-img img { transition: transform .4s ease; }
+    .rec-card:hover .rec-card-img img { transform: scale(1.06); }
+    .rec-card-body { padding: 22px 22px 26px; }
+    .rec-card-number {
+      font-size: 11px;
+      color: var(--red);
+      font-weight: 700;
+      letter-spacing: .15em;
+      margin-bottom: 8px;
+    }
+    .rec-card-name {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+    .rec-card-desc { font-size: 13px; color: var(--gray); line-height: 1.75; margin-bottom: 18px; }
+    .rec-card-contents {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .rec-tag {
+      font-size: 11px;
+      background: var(--bg2);
+      color: var(--ink);
+      border-radius: 4px;
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      font-weight: 500;
+    }
+    .rec-tag.highlight { background: #FFF3EE; border-color: #F4B89E; color: var(--red-dark); }
+    .rec-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .rec-card-price {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--red);
+    }
+    .rec-card-price small { font-size: 13px; color: var(--gray); margin-left: 3px; font-weight: 400; }
+    .rec-card-order {
+      font-size: 12px;
+      color: var(--red);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .rec-card-order::after { content: '→'; }
+    .featured .rec-card-price { font-size: 28px; }
+
+    /* 4枚目：バナー型 */
+    .rec-banner {
+      grid-column: span 2;
+      background: linear-gradient(110deg, var(--ink) 55%, #3A1A0A);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: var(--shadow-lg);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .rec-banner:hover { transform: translateY(-4px); box-shadow: 0 16px 56px rgba(0,0,0,.3); }
+    .rec-banner-img { aspect-ratio: 16/10; overflow: hidden; }
+    .rec-banner-img img { height: 100%; }
+    .rec-banner-body {
+      padding: 32px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+    .rec-banner-label {
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: .2em;
+      font-weight: 700;
+    }
+    .rec-banner-name {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.45;
+    }
+    .rec-banner-desc { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.75; }
+    .rec-banner-price {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 30px;
+      color: var(--gold-lt);
+      font-weight: 700;
+    }
+    .rec-banner-price small { font-size: 14px; color: rgba(255,255,255,.45); font-weight: 400; margin-left: 4px; }
+
+    /* ==================== RESERVATION ==================== */
+    #reservation {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .reservation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .reservation-info h3 {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--ink);
+    }
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table tr { border-bottom: 1px solid var(--border); }
+    .info-table th, .info-table td {
+      padding: 14px 0;
+      text-align: left;
+      font-size: 14px;
+      vertical-align: top;
+    }
+    .info-table th {
+      width: 110px;
+      color: var(--gray);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+    .info-table td { color: var(--ink); font-weight: 500; }
+    .info-note {
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 16px;
+      line-height: 1.75;
+      padding: 14px 16px;
+      background: var(--bg2);
+      border-radius: 8px;
+      border-left: 3px solid var(--gold);
+    }
+    /* 予約フォーム */
+    .reservation-form-wrap {
+      background: var(--bg2);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      border: 1px solid var(--border);
+    }
+    .form-title {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .form-title::before {
+      content: '';
+      display: block;
+      width: 4px; height: 22px;
+      background: var(--red);
+      border-radius: 2px;
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 7px;
+    }
+    .form-group label .required {
+      color: var(--red);
+      font-size: 11px;
+      margin-left: 4px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      background: var(--white);
+      color: var(--ink);
+      transition: border-color .2s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--red);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-submit { width: 100%; padding: 18px; margin-top: 8px; font-size: 16px; }
+
+    /* ==================== ACCESS ==================== */
+    #access {
+      padding: 80px 0;
+      background: var(--bg);
+    }
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .access-map {
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 400px;
+      background: #D8E0C0;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .access-map iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .access-map-link {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      box-shadow: 0 1px 4px rgba(0,0,0,.2);
+      z-index: 1;
+    }
+    .access-map-link:hover { background: #f0f0f0; }
+    .access-map-placeholder {
+      text-align: center;
+      color: var(--gray);
+    }
+    .access-map-placeholder svg { width: 48px; height: 48px; margin: 0 auto 12px; opacity: .4; }
+    .access-map-placeholder p { font-size: 13px; }
+    .access-info h3 {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .access-items { display: flex; flex-direction: column; gap: 18px; }
+    .access-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .access-icon {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: var(--red);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .access-icon svg { width: 20px; height: 20px; }
+    .access-item-text strong { display: block; font-size: 13px; color: var(--gray); margin-bottom: 3px; font-weight: 500; }
+    .access-item-text span { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.55; }
+
+    /* ==================== FOOTER CTA ==================== */
+    #footer-cta {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--red-dark) 0%, #7B1F15 100%);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    #footer-cta::before {
+      content: 'メイヤー';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 200px;
+      color: rgba(255,255,255,.04);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .footer-cta-content { position: relative; z-index: 1; }
+    .footer-cta-content .section-label { color: var(--gold-lt); }
+    .footer-cta-content .section-title { color: var(--white); margin-bottom: 16px; }
+    .footer-cta-content .section-title span { color: var(--gold-lt); }
+    .footer-cta-content p { color: rgba(255,255,255,.75); font-size: 15px; max-width: 540px; margin: 0 auto 40px; line-height: 1.85; }
+    .footer-cta-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .footer-cta-btns .btn { padding: 18px 40px; font-size: 16px; }
+    .footer-cta-btns .btn-gold { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+    .footer-cta-note { font-size: 13px; color: rgba(255,255,255,.5); }
+
+    /* ==================== FOOTER ==================== */
+    #footer {
+      background: #0E0A04;
+      color: rgba(255,255,255,.55);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 28px;
+    }
+    .footer-logo { margin-bottom: 12px; }
+    .footer-logo-jp {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .footer-logo-en { font-size: 11px; color: var(--gold); letter-spacing: .12em; margin-top: 4px; }
+    .footer-desc { font-size: 12px; line-height: 1.85; max-width: 260px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.6); transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 11px; text-align: center; color: rgba(255,255,255,.3); }
+
+    /* ==================== MODAL ==================== */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.7);
+      z-index: 990;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      background: var(--white);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 520px;
+      padding: 40px 36px;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      animation: modalIn .25s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(24px) scale(.96); }
+      to   { opacity: 1; transform: none; }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: var(--gray);
+      line-height: 1;
+      padding: 4px;
+    }
+    .modal-close:hover { color: var(--ink); }
+    .modal-title {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .modal-sub { font-size: 13px; color: var(--gray); margin-bottom: 28px; }
+    .modal-submit { width: 100%; }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 900px) {
+      .concept-grid { grid-template-columns: 1fr; gap: 40px; }
+      .concept-img-sub { width: 42%; }
+      .recommend-grid { grid-template-columns: 1fr 1fr; }
+      .rec-card.featured { transform: none; }
+      .rec-banner { grid-column: span 2; grid-template-columns: 1fr; }
+      .rec-banner-img { aspect-ratio: 16/7; }
+      .reservation-grid { grid-template-columns: 1fr; }
+      .access-grid { grid-template-columns: 1fr; }
+      .popular-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      #concept { padding: 64px 0; }
+      #popular { padding: 64px 0; }
+      #recommend { padding: 64px 0; }
+      #reservation { padding: 64px 0; }
+      .recommend-grid { grid-template-columns: 1fr; }
+      .rec-banner { grid-column: 1; }
+      .hero-cta { flex-direction: column; align-items: flex-start; }
+      .reservation-form-wrap { padding: 24px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; gap: 24px; }
+    }
+
+    /* ==================== TEISHOKU MENU ==================== */
+    #teishoku { background: var(--bg2); padding: 88px 0; }
+    .teishoku-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .teishoku-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,.08);
+      border: 1px solid var(--border);
+      transition: transform .25s, box-shadow .25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .teishoku-card-body { flex: 1; }
+    .teishoku-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 32px rgba(0,0,0,.14);
+    }
+    .teishoku-card-img { height: 240px; overflow: hidden; flex-shrink: 0; }
+    .teishoku-card-img img { transition: transform .4s ease; }
+    .teishoku-card:hover .teishoku-card-img img { transform: scale(1.06); }
+    .teishoku-card-body { padding: 16px 18px 20px; }
+    .teishoku-card-name {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 6px;
+    }
+    .teishoku-card-desc { font-size: 12px; color: var(--gray); line-height: 1.7; margin-bottom: 10px; }
+    .teishoku-card-price { font-size: 20px; font-weight: 700; font-family: 'Zen Maru Gothic', sans-serif; color: var(--red); }
+    .teishoku-card-price small { font-size: 11px; font-weight: 400; color: var(--gray); margin-left: 4px; }
+    .teishoku-note { text-align: center; font-size: 13px; color: var(--gray); margin-top: 24px; }
+
+    /* ==================== BANQUET PLAN ==================== */
+    #banquet { background: #0E1A2B; padding: 88px 0; }
+    #banquet .section-label { color: var(--gold); border-color: var(--gold); }
+    #banquet .section-title { color: var(--white); }
+    #banquet .section-title span { color: var(--gold-lt); }
+    #banquet .section-sub { color: rgba(255,255,255,.55); }
+    .banquet-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .banquet-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(201,168,76,.25);
+      border-radius: var(--radius);
+      padding: 28px 24px 32px;
+      display: flex; flex-direction: column;
+    }
+    .banquet-card-label {
+      font-size: 11px; letter-spacing: .2em; color: var(--gold); text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .banquet-card-title {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-size: 22px; font-weight: 700; color: var(--white);
+      margin-bottom: 4px;
+    }
+    .banquet-card-min { font-size: 12px; color: rgba(255,255,255,.45); margin-bottom: 20px; }
+    .banquet-plan-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .banquet-plan-row:last-of-type { border-bottom: none; }
+    .banquet-plan-name { font-size: 13px; color: rgba(255,255,255,.7); }
+    .banquet-plan-detail { font-size: 11px; color: rgba(255,255,255,.35); }
+    .banquet-plan-price { font-size: 18px; font-weight: 700; color: var(--gold-lt); font-family: 'Zen Maru Gothic', sans-serif; }
+    .banquet-plan-price small { font-size: 11px; color: rgba(255,255,255,.4); font-weight: 400; }
+    .banquet-nomihoudai {
+      margin-top: 32px; background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.3);
+      border-radius: 8px; padding: 16px 20px;
+    }
+    .banquet-nomihoudai-title { font-size: 18px; font-weight: 700; color: var(--gold-lt); margin-bottom: 10px; }
+    .banquet-nomihoudai-row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,.7); padding: 4px 0; }
+    .banquet-nomihoudai-price { font-weight: 700; color: var(--gold-lt); }
+    .banquet-cta { margin-top: 40px; text-align: center; }
+    .banquet-note { font-size: 12px; color: rgba(255,255,255,.35); margin-top: 16px; line-height: 1.8; }
+    @media (max-width: 768px) {
+      .teishoku-grid { grid-template-columns: repeat(2, 1fr); }
+      .banquet-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .teishoku-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header id="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <img src="restaurant-reservation/メイヤー素材/高画質メイヤー.png" alt="メイヤーキャラクター" style="width:36px;height:36px;object-fit:contain;flex-shrink:0;">
+        <span class="logo-jp">鳥取中華飯 メイヤー！</span>
+        <span class="logo-en">MAYER! TOTTORI CHINESE</span>
+      </a>
+      <div class="header-hours">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>営業時間</span>
+        <strong>11:00 – 14:00</strong>
+      </div>
+      <div class="header-cta">
+        <a href="#popular" class="btn btn-outline">メニューを見る</a>
+        <a href="#reservation" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          お席を予約する
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== HERO ==================== -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="restaurant-reservation/メイヤー素材/店頭A0看板＿鳥取中華飯%20メイヤー！.png" alt="鳥取中華飯メイヤー！メインビジュアル">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-deco-line"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">道の駅「燕趙園」にある中華レストラン</div>
+      <p class="hero-eyecatch">景色は中国、味わいは鳥取。</p>
+      <h1 class="hero-title">
+        <span class="accent">牛骨の旨み</span>と<br>
+        中華の火力が<br>出会う場所。
+        <span class="name">鳥取中華飯 メイヤー！</span>
+      </h1>
+      <p class="hero-desc">
+        燕趙園のそばで、<br>
+        鳥取産食材をふんだんに使った本格中華料理を。
+      </p>
+      <div class="hero-cta">
+        <a href="#recommend" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          おすすめメニューを見る
+        </a>
+        <a href="#reservation" class="btn btn-outline">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          お席を予約する
+        </a>
+      </div>
+      <div class="hero-info">
+        <div class="hero-info-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          11:00〜14:00
+        </div>
+        <div class="hero-info-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          鳥取県東伯郡湯梨浜町
+        </div>
+        <div class="hero-info-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          団体バスツアー受入可
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span></span>
+    SCROLL
+  </div>
+</section>
+
+<!-- ==================== ANNOUNCE ==================== -->
+<div id="announce">
+  <div class="container">
+    <div class="announce-inner">
+      <div class="announce-item">
+        <span class="tag">予約</span>
+        団体・バスツアーのご予約は1週間前までにお電話ください
+      </div>
+      <span class="divider-dot">·</span>
+      <div class="announce-item">
+        <span class="tag">駐車場</span>
+        燕趙園駐車場（無料）をご利用いただけます
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONCEPT ==================== -->
+<section id="concept">
+  <div class="container">
+    <div class="concept-grid">
+      <div class="concept-img-wrap">
+        <div class="concept-img-main">
+          <img src="restaurant-reservation/メイヤー素材/ChatGPT%20Image%202025年6月5日%2018_26_09.png" alt="燕趙園を望む開放的な店内">
+        </div>
+        <div class="concept-img-sub">
+          <img src="restaurant-reservation/メイヤー素材/高画質メイヤー.png" alt="メイヤーキャラクター" style="object-fit:contain;background:#fff8f0;">
+        </div>
+      </div>
+      <div>
+        <span class="section-label">Concept</span>
+        <h2 class="section-title">景色は中国、<br><span>味わいは鳥取。</span></h2>
+        <p class="concept-text">
+          燕趙園に隣接した開放的な空間で、じっくり煮込んだ牛骨スープと、中華の火力で仕上げた本格チャーハンをご堪能ください。お待たせせずゆったりとお過ごしいただけるよう、事前予約をおすすめしております。
+        </p>
+        <div class="concept-features">
+          <div class="concept-feature">
+            <div class="concept-feature-icon">🪟</div>
+            <div class="concept-feature-text">
+              <strong>開放的な窓側席</strong>
+              <span>明るく開放的な雰囲気の中でお食事をお楽しみいただけます</span>
+            </div>
+          </div>
+          <div class="concept-feature">
+            <div class="concept-feature-icon">🦴</div>
+            <div class="concept-feature-text">
+              <strong>鳥取名物牛骨で煮出した甘みのあるスープ</strong>
+              <span>鳥取の「牛骨ラーメン」文化を受け継ぐ、深みある一杯</span>
+            </div>
+          </div>
+          <div class="concept-feature">
+            <div class="concept-feature-icon">🍳</div>
+            <div class="concept-feature-text">
+              <strong>本格中華の強火で仕上げるチャーハン</strong>
+              <span>強火で一気に仕上げた一皿は、何度食べても飽きない王道の旨さ</span>
+            </div>
+          </div>
+          <div class="concept-feature">
+            <div class="concept-feature-icon">🚌</div>
+            <div class="concept-feature-text">
+              <strong>団体・バスツアーのご予約承ります</strong>
+              <span>旅行会社様のお問い合わせもお気軽にどうぞ。専用コースをご用意します</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== POPULAR MENU ==================== -->
+<section id="popular">
+  <div class="container">
+    <div class="popular-head">
+      <span class="section-label">Popular Menu</span>
+      <h2 class="section-title" style="color:var(--white)">看板メニュー</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.55)">地元鳥取が育んだ食文化と、中華料理の技が合わさった、当店の顔。</p>
+    </div>
+    <div class="popular-grid">
+      <div class="popular-card">
+        <div class="popular-card-img">
+          <img src="restaurant-reservation/メイヤー素材/ChatGPT%20Image%202025年12月21日%2014_06_08.png" alt="鳥取牛骨ラーメン">
+          <div class="popular-card-badge">看板 No.1</div>
+        </div>
+        <div class="popular-card-body">
+          <div class="popular-card-name">鳥取 牛骨ラーメン</div>
+          <p class="popular-card-desc">牛骨をじっくり12時間煮込んだ、芳醇でありながらすっきりとしたスープ。鳥取が誇る牛骨文化を、中華の技法で昇華させた一杯。</p>
+          <div class="popular-card-price">¥1,000 <small>（税込）</small></div>
+        </div>
+      </div>
+      <div class="popular-card">
+        <div class="popular-card-img">
+          <img src="restaurant-reservation/メイヤー素材/メイヤー！メニュー/ChatGPT%20Image%202025年12月16日%2011_20_59.png" alt="炒飯" style="object-position: center top;">
+          <div class="popular-card-badge">看板 No.2</div>
+        </div>
+        <div class="popular-card-body">
+          <div class="popular-card-name">牛すじのせチャーハン</div>
+          <p class="popular-card-desc">強火で一気に炒め上げたチャーハンに、とろける牛すじをのせた贅沢な一皿。スープ付き。</p>
+          <div class="popular-card-price">¥1,000 <small>（税込）</small></div>
+        </div>
+      </div>
+      <div class="popular-card">
+        <div class="popular-card-img">
+          <img src="restaurant-reservation/メイヤー素材/メイヤー！メニュー/ChatGPT%20Image%202025年10月2日%2017_45_17.png" alt="エビチリ定食">
+          <div class="popular-card-badge">看板 No.3</div>
+        </div>
+        <div class="popular-card-body">
+          <div class="popular-card-name">エビチリ定食</div>
+          <p class="popular-card-desc">ぷりっぷり海老に甘辛ソース！王道中華。ご飯・スープ・副菜付き。</p>
+          <div class="popular-card-price">¥1,500 <small>（税込）</small></div>
+        </div>
+      </div>
+      <div class="popular-card">
+        <div class="popular-card-img">
+          <img src="restaurant-reservation/メイヤー素材/メイヤー！メニュー/ChatGPT%20Image%202025年10月3日%2010_40_21.png" alt="本格点心盛り合わせ">
+          <div class="popular-card-badge">看板 No.4</div>
+        </div>
+        <div class="popular-card-body">
+          <div class="popular-card-name">8種の彩り点心セット</div>
+          <p class="popular-card-desc">蒸籠で丁寧に仕上げた8種の点心盛り合わせ。ご飯・スープ・副菜付きの定食でも。</p>
+          <div class="popular-card-price">¥1,500 <small>（税込）</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TEISHOKU MENU ==================== -->
+<section id="teishoku">
+  <div class="container">
+    <div>
+      <span class="section-label">Teishoku Menu</span>
+      <h2 class="section-title">定食<span>メニュー</span></h2>
+      <p class="section-sub">ご飯・スープのおかわり無料。副菜・デザートの種類は日により異なります。</p>
+    </div>
+    <div class="teishoku-grid">
+
+      <div class="teishoku-card">
+        <div class="teishoku-card-img">
+          <img src="restaurant-reservation/メイヤー素材/メイヤー！メニュー/ChatGPT%20Image%202025年12月16日%2014_43_03.png" alt="肉汁餃子定食">
+        </div>
+        <div class="teishoku-card-body">
+          <div class="teishoku-card-name">肉汁餃子定食</div>
+          <p class="teishoku-card-desc">肉汁が溢れるジューシー餃子。ご飯・スープ・副菜付き、おかわり無料。</p>
+          <div class="teishoku-card-price">¥1,500 <small>（税込）</small></div>
+        </div>
+      </div>
+
+      <div class="teishoku-card">
+        <div class="teishoku-card-img">
+          <img src="restaurant-reservation/メイヤー素材/メイヤー！メニュー/ChatGPT%20Image%202025年10月2日%2017_28_38.png" alt="油淋鶏定食">
+        </div>
+        <div class="teishoku-card-body">
+          <div class="teishoku-card-name">油淋鶏定食</div>
+          <p class="teishoku-card-desc">甘辛だれが絡んでご飯が進む！ご飯・スープ・副菜付き、おかわり無料。</p>
+          <div class="teishoku-card-price">¥1,500 <small>（税込）</small></div>
+        </div>
+      </div>
+
+      <div class="teishoku-card">
+        <div class="teishoku-card-img">
+          <img src="restaurant-reservation/メイヤー素材/メイヤー！メニュー/ChatGPT%20Image%202025年10月2日%2019_23_17.png" alt="麻婆豆腐定食">
+        </div>
+        <div class="teishoku-card-body">
+          <div class="teishoku-card-name">麻婆豆腐定食</div>
+          <p class="teishoku-card-desc">ぐつぐつ鉄鍋で提供。四川風の味付け。ご飯・スープ・副菜付き、おかわり無料。</p>
+          <div class="teishoku-card-price">¥1,500 <small>（税込）</small></div>
+        </div>
+      </div>
+
+      <div class="teishoku-card">
+        <div class="teishoku-card-img">
+          <img src="restaurant-reservation/メイヤー素材/メイヤー！メニュー/ChatGPT%20Image%202025年10月2日%2017_45_17.png" alt="エビチリ定食">
+        </div>
+        <div class="teishoku-card-body">
+          <div class="teishoku-card-name">エビチリ定食</div>
+          <p class="teishoku-card-desc">ぷりっぷり海老に甘辛ソース！王道中華。ご飯・スープ・副菜付き、おかわり無料。</p>
+          <div class="teishoku-card-price">¥1,500 <small>（税込）</small></div>
+        </div>
+      </div>
+
+      <div class="teishoku-card">
+        <div class="teishoku-card-img">
+          <img src="restaurant-reservation/メイヤー素材/メイヤー！メニュー/ChatGPT%20Image%202025年10月2日%2016_54_01.png" alt="エビマヨ定食">
+        </div>
+        <div class="teishoku-card-body">
+          <div class="teishoku-card-name">エビマヨ定食</div>
+          <p class="teishoku-card-desc">まろやかマヨにぷり海老がとろける贅沢な一皿。ご飯・スープ・副菜付き、おかわり無料。</p>
+          <div class="teishoku-card-price">¥1,500 <small>（税込）</small></div>
+        </div>
+      </div>
+
+      <div class="teishoku-card">
+        <div class="teishoku-card-img">
+          <img src="restaurant-reservation/メイヤー素材/メイヤー！メニュー/ChatGPT%20Image%202025年10月2日%2017_15_14.png" alt="回鍋肉定食">
+        </div>
+        <div class="teishoku-card-body">
+          <div class="teishoku-card-name">回鍋肉定食</div>
+          <p class="teishoku-card-desc">ガツンとニンニク！豚肉と野菜でスタミナ満点。ご飯・スープ・副菜付き、おかわり無料。</p>
+          <div class="teishoku-card-price">¥1,500 <small>（税込）</small></div>
+        </div>
+      </div>
+
+    </div>
+    <p class="teishoku-note">※価格はすべて税込です。ご飯・スープのおかわり無料。副菜・デザートの種類は日により異なります。</p>
+  </div>
+</section>
+
+
+<!-- ==================== BANQUET PLAN ==================== -->
+<section id="banquet">
+  <div class="container">
+    <div style="margin-bottom: 0;">
+      <span class="section-label">Group &amp; Banquet</span>
+      <h2 class="section-title">ご宴会<span>プラン</span></h2>
+      <p class="section-sub">用途に合わせた3つのスタイル。ご予算に合わせてお見積りいたします。</p>
+    </div>
+    <div class="banquet-grid">
+
+      <div class="banquet-card">
+        <div class="banquet-card-label">Buffet Style</div>
+        <div class="banquet-card-title">バイキング</div>
+        <div class="banquet-card-min">20名様以上〜 ／ 2時間制・食べ放題</div>
+        <div class="banquet-plan-row">
+          <div>
+            <div class="banquet-plan-name">カジュアル</div>
+            <div class="banquet-plan-detail">全10品程度</div>
+          </div>
+          <div class="banquet-plan-price">¥2,500 <small>（税込）</small></div>
+        </div>
+        <div class="banquet-plan-row">
+          <div>
+            <div class="banquet-plan-name">スタンダード</div>
+            <div class="banquet-plan-detail">全14品程度</div>
+          </div>
+          <div class="banquet-plan-price">¥3,500 <small>（税込）</small></div>
+        </div>
+        <div class="banquet-plan-row">
+          <div>
+            <div class="banquet-plan-name">プレミアム</div>
+            <div class="banquet-plan-detail">全17品程度</div>
+          </div>
+          <div class="banquet-plan-price">¥5,000 <small>（税込）</small></div>
+        </div>
+      </div>
+
+      <div class="banquet-card">
+        <div class="banquet-card-label">Course Style</div>
+        <div class="banquet-card-title">コース</div>
+        <div class="banquet-card-min">10名様以上〜 ／ 着席・順出し（目安1時間30分）</div>
+        <div class="banquet-plan-row">
+          <div>
+            <div class="banquet-plan-name">カジュアル</div>
+            <div class="banquet-plan-detail">全8品程度</div>
+          </div>
+          <div class="banquet-plan-price">¥2,800 <small>（税込）</small></div>
+        </div>
+        <div class="banquet-plan-row">
+          <div>
+            <div class="banquet-plan-name">スタンダード</div>
+            <div class="banquet-plan-detail">全10品程度</div>
+          </div>
+          <div class="banquet-plan-price">¥3,800 <small>（税込）</small></div>
+        </div>
+        <div class="banquet-plan-row">
+          <div>
+            <div class="banquet-plan-name">プレミアム</div>
+            <div class="banquet-plan-detail">全15品程度</div>
+          </div>
+          <div class="banquet-plan-price">¥5,500 <small>（税込）</small></div>
+        </div>
+      </div>
+
+      <div class="banquet-card">
+        <div class="banquet-card-label">Set / Bento</div>
+        <div class="banquet-card-title">定食・お弁当</div>
+        <div class="banquet-card-min">定食：上限60名様 ／ お弁当：人数上限なし・配達可能</div>
+        <div class="banquet-plan-row">
+          <div>
+            <div class="banquet-plan-name">定食（一斉提供）</div>
+            <div class="banquet-plan-detail">お一人様※ご予算は要相談</div>
+          </div>
+          <div class="banquet-plan-price">¥1,500〜 <small>（税込）</small></div>
+        </div>
+        <div class="banquet-plan-row">
+          <div>
+            <div class="banquet-plan-name">お弁当（配達可能）</div>
+            <div class="banquet-plan-detail">お一人様※ご予算は要相談</div>
+          </div>
+          <div class="banquet-plan-price">¥1,000〜 <small>（税込）</small></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="banquet-nomihoudai">
+      <div class="banquet-nomihoudai-title">🍺 飲み放題オプション</div>
+      <div class="banquet-nomihoudai-row">
+        <span>ソフトドリンク飲み放題</span>
+        <span class="banquet-nomihoudai-price">+¥800</span>
+      </div>
+      <div class="banquet-nomihoudai-row">
+        <span>アルコール飲み放題（生ビール付き）</span>
+        <span class="banquet-nomihoudai-price">+¥2,000</span>
+      </div>
+      <div class="banquet-nomihoudai-row">
+        <span>アルコール飲み放題（ビール無し）</span>
+        <span class="banquet-nomihoudai-price">+¥1,300</span>
+      </div>
+    </div>
+
+    <div class="banquet-cta">
+      <a href="#reservation" class="btn btn-primary">宴会プランを相談する</a>
+      <p class="banquet-note">
+        ※予約は1週間前までにお電話またはメールにてご連絡ください。<br>
+        ※貸切・時間等はご相談ください。会場使用料込み。<br>
+        ※機材の貸し出しオプションあり。送迎人数に応じたスライド制手数料あり。<br>
+        ※お問い合わせ：0857-51-1069 ／ info@skyer.biz
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RESERVATION ==================== -->
+<section id="reservation">
+  <div class="container">
+    <div style="margin-bottom:56px;">
+      <span class="section-label">Reservation</span>
+      <h2 class="section-title">ご予約・<span>お問い合わせ</span></h2>
+      <p class="section-sub">週末・大型連休は満席になることが多いため、事前のご予約をおすすめしております。</p>
+    </div>
+    <div class="reservation-grid">
+      <div class="reservation-info">
+        <h3>店舗情報</h3>
+        <table class="info-table">
+          <tr>
+            <th>店舗名</th>
+            <td>鳥取中華飯 メイヤー！</td>
+          </tr>
+          <tr>
+            <th>営業時間</th>
+            <td>11:00 〜 14:00</td>
+          </tr>
+          <tr>
+            <th>定休日</th>
+            <td>月曜日、火曜日、その他不定臨時休業あり</td>
+          </tr>
+          <tr>
+            <th>所在地</th>
+            <td>鳥取県東伯郡湯梨浜町引地565<br>道の駅「燕趙園」内</td>
+          </tr>
+          <tr>
+            <th>電話</th>
+            <td>0857-51-1069（受付 9:00〜17:00）</td>
+          </tr>
+          <tr>
+            <th>駐車場</th>
+            <td>燕趙園駐車場（無料）をご利用ください</td>
+          </tr>
+          <tr>
+            <th>席数</th>
+            <td>約200席</td>
+          </tr>
+        </table>
+        <p class="info-note">
+          ※ 団体・バスツアーのご予約は1週間前までにお電話ください。<br>
+          ※ アレルギーのある方は予約時にお申し付けください。<br>
+          ※ 当日のキャンセルはご遠慮ください。
+        </p>
+      </div>
+
+      <div class="reservation-form-wrap">
+        <div class="form-title">お席の予約フォーム</div>
+        <form id="gform">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-name">お名前 <span class="required">*必須</span></label>
+              <input type="text" id="f-name" name="entry.684200842" placeholder="山田 太郎" required>
+            </div>
+            <div class="form-group">
+              <label for="f-guests">人数 <span class="required">*必須</span></label>
+              <select id="f-guests" name="entry.396732223" required>
+                <option value="">選択してください</option>
+                <option>1名</option>
+                <option>2名</option>
+                <option>3名</option>
+                <option>4名</option>
+                <option>5名</option>
+                <option>6名</option>
+                <option>7名</option>
+                <option>8名</option>
+                <option>9名</option>
+                <option>10名</option>
+                <option>10名以上（要相談）</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-date">ご希望日 <span class="required">*必須</span></label>
+              <input type="date" id="f-date" required>
+              <input type="hidden" name="entry.1399098642_year"  id="f-date-year">
+              <input type="hidden" name="entry.1399098642_month" id="f-date-month">
+              <input type="hidden" name="entry.1399098642_day"   id="f-date-day">
+            </div>
+            <div class="form-group">
+              <label for="f-time">ご希望時間 <span class="required">*必須</span></label>
+              <select id="f-time" name="entry.2018645451" required>
+                <option value="">選択してください</option>
+                <option>11:00</option>
+                <option>11:30</option>
+                <option>12:00</option>
+                <option>12:30</option>
+                <option>13:00</option>
+                <option>13:30</option>
+                <option>17:00</option>
+                <option>17:30</option>
+                <option>18:00</option>
+                <option>18:30</option>
+                <option>19:00</option>
+                <option>19:30</option>
+                <option>20:00</option>
+                <option>20:30</option>
+                <option>21:00</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-phone">電話番号 <span class="required">*必須</span></label>
+              <input type="tel" id="f-phone" name="entry.534148323" placeholder="090-0000-0000" required>
+            </div>
+            <div class="form-group">
+              <label for="f-email">メールアドレス <span class="required">*必須</span></label>
+              <input type="email" id="f-email" name="entry.1455267688" placeholder="example@email.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f-request">ご要望・アレルギー等</label>
+            <textarea id="f-request" name="entry.1952855493" placeholder="窓際席希望、アレルギーなど、ご自由にお書きください"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit" id="submit-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            予約を送信する
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ACCESS ==================== -->
+<section id="access">
+  <div class="container">
+    <div style="margin-bottom:24px;">
+      <span class="section-label">Access</span>
+      <h2 class="section-title">アクセス</h2>
+    </div>
+    <div class="access-grid">
+      <div class="access-map">
+        <iframe
+          src="https://maps.google.com/maps?q=鳥取県東伯郡湯梨浜町引地565-1&output=embed&hl=ja&z=15"
+          width="100%" height="100%" style="border:0; border-radius:var(--radius);" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a href="https://maps.app.goo.gl/zUKFXKRCfZxJSkvC8" target="_blank" rel="noopener" class="access-map-link">マップ ↗</a>
+      </div>
+      <div class="access-info">
+        <h3>行き方</h3>
+        <div class="access-items">
+          <div class="access-item">
+            <div class="access-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div class="access-item-text">
+              <strong>お車でお越しの方</strong>
+              <span>【関西方面】鳥取自動車道→山陰自動車道 泊・東郷IC下車 約8分<br>【広島・岡山方面】米子自動車道 湯原IC下車 約60分<br>駐車場：道の駅「燕趙園」と共用（無料）</span>
+            </div>
+          </div>
+          <div class="access-item">
+            <div class="access-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+            </div>
+            <div class="access-item-text">
+              <strong>電車でお越しの方</strong>
+              <span>【京都・大阪から】特急スーパーはくと→倉吉駅下車、車で約10分<br>【岡山から】特急スーパーいなば→倉吉駅下車、車で約10分</span>
+            </div>
+          </div>
+          <div class="access-item">
+            <div class="access-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="access-item-text">
+              <strong>高速バスでお越しの方</strong>
+              <span>神戸・大阪線（約4時間）、広島線（約4時間30分）<br>東京夜行バス（約10時間30分）、福岡線も運行</span>
+            </div>
+          </div>
+          <div class="access-item">
+            <div class="access-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+            </div>
+            <div class="access-item-text">
+              <strong>飛行機でお越しの方</strong>
+              <span>羽田空港→鳥取空港（約90分・1日5便）<br>羽田空港→米子空港（約90分・1日6便）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER CTA ==================== -->
+<section id="footer-cta">
+  <div class="container">
+    <div class="footer-cta-content">
+      <span class="section-label">予約・ご来店</span>
+      <h2 class="section-title">さあ、燕趙園へ。<br><span>テーブルをご用意して</span>お待ちしております。</h2>
+      <p>営業時間は11:00〜14:00のみ。週末は混み合いますので、ぜひ事前のご予約をご利用ください。</p>
+      <div class="footer-cta-btns">
+        <a href="#recommend" class="btn btn-gold">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          おすすめメニューを見る
+        </a>
+        <a href="#reservation" class="btn btn-outline">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          お席を予約する
+        </a>
+      </div>
+      <p class="footer-cta-note">お電話でのご予約：0857-51-1069（受付 9:00〜17:00）</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-jp">鳥取中華飯 メイヤー！</div>
+          <div class="footer-logo-en">MAYER! TOTTORI CHINESE</div>
+        </div>
+        <p class="footer-desc">道の駅「燕趙園」に隣接した中華料理店。<br>鳥取名物の牛骨ラーメンと本格チャーハンを中心に、地元食材を活かした中華料理をご提供しています。</p>
+      </div>
+      <div>
+        <p style="font-size:12px; color:rgba(255,255,255,.4); margin-bottom:10px; letter-spacing:.1em;">MENU</p>
+        <div class="footer-links">
+          <a href="#concept">コンセプト</a>
+          <a href="#popular">看板メニュー</a>
+          <a href="#teishoku">定食メニュー</a>
+          <a href="#banquet">宴会プラン</a>
+          <a href="#reservation">ご予約・お問い合わせ</a>
+          <a href="#access">アクセス</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px; color:rgba(255,255,255,.4); margin-bottom:10px; letter-spacing:.1em;">INFO</p>
+        <div class="footer-links" style="gap:8px;">
+          <span style="font-size:13px; color:rgba(255,255,255,.6);">営業時間：11:00〜14:00</span>
+          <span style="font-size:13px; color:rgba(255,255,255,.6);">定休日：月曜日・火曜日、その他不定臨時休業あり</span>
+          <span style="font-size:13px; color:rgba(255,255,255,.6);">鳥取県東伯郡湯梨浜町引地565</span>
+          <span style="font-size:13px; color:rgba(255,255,255,.6);">TEL: 0857-51-1069</span>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 鳥取中華飯 メイヤー！ All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- ==================== MODAL (予約完了) ==================== -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="閉じる">×</button>
+    <div style="font-size:48px; text-align:center; margin-bottom:16px;">🎉</div>
+    <h2 class="modal-title" style="text-align:center;">予約リクエストを受け付けました</h2>
+    <p class="modal-sub" style="text-align:center;">確認のご連絡を1〜2営業日以内にお電話またはメールにてご連絡いたします。<br>お電話の場合、0857-51-1069 よりご連絡します。</p>
+    <button class="btn btn-primary modal-submit" onclick="closeModal()">閉じる</button>
+  </div>
+</div>
+
+<script>
+  /* ---- ヘッダー スクロール変化 ---- */
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      header.style.background = 'rgba(14,10,4,.97)';
+    } else {
+      header.style.background = 'rgba(26,18,9,.92)';
+    }
+  }, { passive: true });
+
+  /* ---- 予約フォーム送信（Google Forms 連携・fetch no-cors方式）---- */
+  document.getElementById('gform').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name    = document.getElementById('f-name').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const dateVal = document.getElementById('f-date').value;
+    const time    = document.getElementById('f-time').value;
+    const guests  = document.getElementById('f-guests').value;
+    const request = document.getElementById('f-request').value.trim();
+
+    if (!name || !phone || !email || !dateVal || !time || !guests) {
+      alert('必須項目をすべてご入力ください。');
+      return;
+    }
+
+    const [year, month, day] = dateVal.split('-');
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 送信中...';
+
+    const body = new URLSearchParams({
+      'entry.684200842':        name,
+      'entry.534148323':        phone,
+      'entry.1455267688':       email,
+      'entry.1399098642_year':  year,
+      'entry.1399098642_month': parseInt(month, 10),
+      'entry.1399098642_day':   parseInt(day, 10),
+      'entry.2018645451':       time,
+      'entry.396732223':        guests,
+      'entry.1952855493':       request,
+    });
+
+    fetch('https://script.google.com/macros/s/AKfycbymOi9kBPyONnIKGcLJhG49zojBtTTtsNKW1w0gFhlu8oIH2HfPgatHjIREOaG9dqsA/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+    }).then(() => {
+      document.getElementById('modal').classList.add('open');
+      document.getElementById('gform').reset();
+    }).catch(() => {
+      alert('送信中にエラーが発生しました。お電話にてご予約ください。');
+    }).finally(() => {
+      btn.disabled = false;
+      btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 予約を送信する';
+    });
+  });
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+  }
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  /* ---- スムーズスクロール（ヘッダー高さ補正）---- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const id = this.getAttribute('href');
+      if (id === '#') return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      const offset = 64;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  /* ---- スクロールアニメーション ---- */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.rec-card, .popular-card, .concept-feature, .rec-banner').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity .55s ease, transform .55s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
